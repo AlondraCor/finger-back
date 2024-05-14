@@ -26,6 +26,20 @@ db.connect((err) => {
 
 app.use(bodyParser.json());
 
+app.get("/", (req, res) => {
+  const htmlResponse = `
+    <html>
+      <head>
+        <title>NodeJs y Express en Vercel</title>
+      </head>
+      <body>
+        <h1>Proyecto Back end en vercel</h1>
+      </body>
+    </html>
+  `;
+  res.send(htmlResponse);
+});
+
 app.post('/biometricData', (req, res) => {
   const { userId, biometricData } = req.body;
   const sql = 'INSERT INTO BiometricData (userId, biometricData) VALUES (?, ?)';
